@@ -32,9 +32,12 @@ public class Main {
       "[0-9]*", // only empty string at start
       "[A-Z]*", // "A" of Anyone, incl. empty string ""
       "[0-9]+",  // 123
-      "[0-9]{2}"  // 12
+      "[0-9]{2}",  // 12
 
-
+      "[a-zA-Z]*$",  // boundary matcher, $ end of string
+      "^[a-zA-Z]{3}", // ^ start of string
+      "[aA]ny\\b", // \\b word boundary matcher, always escape with \ any \ like \b -> \\b
+      "\\b[aA]ny"
     };
 
     for (String pattern : patterns) {
