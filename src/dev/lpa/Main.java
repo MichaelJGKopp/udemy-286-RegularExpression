@@ -20,7 +20,8 @@ public class Main {
 //      regexp = regexp.replaceFirst("%(.{1})", a);
 //    }
     int index = 0;
-    while (regexp.contains("%s")) {
+//    while (regexp.contains("%s")) {
+    while (regexp.matches(".*%s.*")) {  // . is any char except newline, * is 0 or more times
       regexp = regexp.replaceFirst("%s", args[index++]);
     }
     return regexp;
