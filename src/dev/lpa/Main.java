@@ -15,10 +15,26 @@ public class Main {
     String testString = "Anyone can Learn abc's, 123's, and any regular expression";
     String replacement = "(-)";
 
-    String[] patterns = { // character literals
-      "abc",
+    String[] patterns = {
+      "abc",  // character literals, matches exactly what is in ""
       "123",
-      "A"
+      "A",
+      "[abc]", // character class, any letter in []
+      "[123]",
+      "[A]",
+      "a|b|c",  // [.] . is a literal in [], using | Or, same as [abc]
+      "ab|bc",  // ab or bc
+      "[a-z]",   // any lower alphabet letter
+      "[0-9]",   // any single digit number
+      "[A-Z]",   // any upper alphabet letter
+      "[a-zA-Z]",  // any alphabet char
+      "[a-zA-Z]*",  // replaces "" + "Anyone" since empty string is included
+      "[0-9]*", // only empty string at start
+      "[A-Z]*", // "A" of Anyone, incl. empty string ""
+      "[0-9]+",  // 123
+      "[0-9]{2}"  // 12
+
+
     };
 
     for (String pattern : patterns) {
