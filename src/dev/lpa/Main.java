@@ -69,6 +69,7 @@ public class Main {
 
     Scanner scanner = new Scanner(paragraph);
     System.out.println(scanner.delimiter());  // \p{javaWhitespace}+, returns instance of pattern class
+    scanner.useDelimiter("\\R");
 
     while (scanner.hasNext()) {
       String element = scanner.next();
