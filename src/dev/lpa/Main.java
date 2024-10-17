@@ -78,7 +78,8 @@ public class Main {
 //    }
 
     scanner.tokens()  // stream of tokens
-      .map(s -> Arrays.stream(s.split("\\s+")).count())
+      .flatMap(s -> Arrays.stream(s.split("\\s+")))
+//      .filter(s -> s.matches("[a-zA-Z]+ble]"))
       .forEach(System.out::println);
     scanner.close();  // included in java doc samples, but not necessary
 
