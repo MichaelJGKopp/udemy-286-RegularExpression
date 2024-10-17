@@ -1,5 +1,7 @@
 package dev.lpa;
 
+import java.util.Scanner;
+
 public class Main {
 
   public static void main(String[] args) {
@@ -64,6 +66,25 @@ public class Main {
     String[] words = paragraph.split("\\s");  // whitespace character, any space, tab, linebreak
     System.out.println("This paragraph has " + words.length + " words");
     System.out.println(paragraph.replaceAll("[a-zA-Z]+ble", "[GRUB]"));
+
+    Scanner scanner = new Scanner(paragraph);
+    System.out.println(scanner.delimiter());  // \p{javaWhitespace}+, returns instance of pattern class
+
+    while (scanner.hasNext()) {
+      String element = scanner.next();
+      System.out.println(element);
+    }
+    scanner.close();  // included in java doc samples, but not necessary
+
+
+
+    /*
+    // short excursion, don't close Scanner(System.in)
+    Scanner scanner1 = new Scanner(System.in);
+    scanner1.close(); // closes underlying global stream System.in !!!
+    Scanner scanner2 = new Scanner(System.in);
+    String test = scanner2.nextLine();  // throws NoSuchElementException
+    */
   }
 
   private static String format(String regexp, String... args) {
