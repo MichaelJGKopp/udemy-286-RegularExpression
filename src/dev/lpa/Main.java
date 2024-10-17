@@ -1,6 +1,5 @@
 package dev.lpa;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -78,11 +77,16 @@ public class Main {
 //    }
 
     System.out.println("------------------------");
-    scanner.tokens()  // stream of tokens
-      .map(s -> s.replaceAll("\\p{Punct}", ""))
-      .flatMap(s -> Arrays.stream(s.split("\\s+")))
-      .filter(s -> s.matches("[a-zA-Z]+ble"))
-      .forEach(System.out::println);
+//    scanner.tokens()  // stream of tokens
+//      .map(s -> s.replaceAll("\\p{Punct}", ""))
+//      .flatMap(s -> Arrays.stream(s.split("\\s+")))
+//      .filter(s -> s.matches("[a-zA-Z]+ble"))
+//      .forEach(System.out::println);
+
+    System.out.println(scanner.findInLine("[A-Za-z]+ble"));
+    // moves scanner forward leaving punctuation
+    System.out.println(scanner.findInLine("[A-Za-z]+ble"));
+    System.out.println(scanner.findInLine("[A-Za-z]+ble"));
     scanner.close();  // included in java doc samples, but not necessary
 
 
