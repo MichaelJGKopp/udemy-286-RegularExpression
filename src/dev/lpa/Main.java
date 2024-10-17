@@ -70,16 +70,18 @@ public class Main {
 
     Scanner scanner = new Scanner(paragraph);
     System.out.println(scanner.delimiter());  // \p{javaWhitespace}+, returns instance of pattern class
-    scanner.useDelimiter("\\R");
+    scanner.useDelimiter("\\R");  // any unicode linebreak
 
 //    while (scanner.hasNext()) {
 //      String element = scanner.next();
 //      System.out.println(element);
 //    }
 
+    System.out.println("------------------------");
     scanner.tokens()  // stream of tokens
+      .map(s -> s.replaceAll("\\p{Punct}", ""))
       .flatMap(s -> Arrays.stream(s.split("\\s+")))
-//      .filter(s -> s.matches("[a-zA-Z]+ble]"))
+      .filter(s -> s.matches("[a-zA-Z]+ble"))
       .forEach(System.out::println);
     scanner.close();  // included in java doc samples, but not necessary
 
