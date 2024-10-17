@@ -1,5 +1,6 @@
 package dev.lpa;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -71,10 +72,14 @@ public class Main {
     System.out.println(scanner.delimiter());  // \p{javaWhitespace}+, returns instance of pattern class
     scanner.useDelimiter("\\R");
 
-    while (scanner.hasNext()) {
-      String element = scanner.next();
-      System.out.println(element);
-    }
+//    while (scanner.hasNext()) {
+//      String element = scanner.next();
+//      System.out.println(element);
+//    }
+
+    scanner.tokens()  // stream of tokens
+      .map(s -> Arrays.stream(s.split("\\s+")).count())
+      .forEach(System.out::println);
     scanner.close();  // included in java doc samples, but not necessary
 
 
